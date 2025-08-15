@@ -2,7 +2,7 @@ import { ImageWithFallback } from "../figma/ImageWithFallback";
 import { Button } from "../ui/button";
 
 export function Beranda() {
-  const heroImage = "bg1.png";
+  const heroImage = "/sadagori/bg1.png";
 
   return (
     <div className="bg-background text-foreground">
@@ -15,7 +15,7 @@ export function Beranda() {
             className="w-full h-full object-cover"
           />
           {/* Layer hitam transparan 50% di atas gambar */}
-          <div className="absolute inset-0 bg-black opacity-50"></div>
+          <div className="absolute inset-0 bg-black opacity-60"></div>
           {/* Gradient fadeout at bottom, warna akhir oranye */}
           <div className="absolute inset-x-0 bottom-0 h-150 pointer-events-none bg-gradient-to-b via-transparent to-[#ffbe00]"></div>
         </div>
@@ -23,14 +23,66 @@ export function Beranda() {
         <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8 pt-16">
           <div className="max-w-2xl">
             {/* Main heading */}
-            <h2 className="center text-center text-2xl md:text-3xl lg:text-4xl font-bold leading-tight text-white">
-              Perhimpunan Pecinta Alam
+            <img
+              src="/sadagori/logo_sadagori_putih.svg"
+              alt="Logo"
+              className=" w-80 mx-auto"
+            />
+            <h2 className="center text-center text-2xl md:text-3xl lg:text-3xl font-bold leading-tight text-white">
+              PERHIMPUNAN PECINTA ALAM
             </h2>
             <h1 className="center text-center text-4xl md:text-6xl lg:text-8xl font-bold leading-tight mb-8 text-white">
               SADAGORI
             </h1>
           </div>
         </div>
+        <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 justify-items-center">
+          <h3 className="text-white font-qgb italic text-3xl mb-2 font-bold">
+            "Kecil tapi Berarti"
+          </h3>
+          <svg
+            className="w-12 h-12 text-white animate-bounce"
+            viewBox="0 0 24 24"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <polyline
+              id="primary"
+              points="21 5 12 10 3 5"
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1"
+            ></polyline>
+            <polyline
+              id="primary-2"
+              data-name="primary"
+              points="21 10 12 15 3 10"
+              fill="none"
+              stroke="currentColor"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="1"
+            ></polyline>
+          </svg>
+        </div>
+      </section>
+
+      {/* New Section: Gradient, Logo, and Quote */}
+      <section className="relative py-20 flex flex-col h-screen items-center justify-center text-center">
+        <div className="absolute inset-x-0 top-0 h-150 pointer-events-none bg-gradient-to-b via-transparent from-[#ffbe00]"></div>
+        <img
+          src="/sadagori/logo_sadagori.svg" // Assuming you want the colored logo here
+          alt="Sadagori Logo"
+          className="w-64 mb-8" // Adjust size as needed
+        />
+        <p className="text-xl md:text-2xl lg:text-3xl font-thin italic text-amber-900 max-w-3xl mx-auto px-4">
+          "Yen ana angin bolang-baling,
+          <br />
+          Aja gagandulan maring kiara,
+          <br />
+          gagandulan maring sadagori"
+        </p>
       </section>
 
       {/* Content Sections - Same background */}

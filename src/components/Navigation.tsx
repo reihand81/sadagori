@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Button } from "./ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "./ui/sheet";
-import { Menu, Mountain, User } from "lucide-react";
+import { Menu, User } from "lucide-react";
 
 export function Navigation() {
   const [isOpen, setIsOpen] = useState(false);
@@ -19,7 +19,7 @@ export function Navigation() {
   }, []);
 
   const navigationItems = [
-    { id: "beranda", label: "Overview", path: "/" },
+    { id: "beranda", label: "Home", path: "/" },
     { id: "tentang", label: "About us", path: "/tentang" },
     { id: "artikel", label: "Blog", path: "/artikel" },
     { id: "galeri", label: "Gallery", path: "/galeri" },
@@ -29,27 +29,27 @@ export function Navigation() {
   return (
     <nav
       className={`fixed w-full top-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? "bg-background/95 backdrop-blur-sm border-b border-border shadow-sm"
-          : "bg-transparent"
+        location.pathname === "/" && !isScrolled
+          ? "bg-transparent py-8 content-center text-white"
+          : "bg-background/95 backdrop-blur-sm border-b border-border shadow-sm text-foreground"
       }`}
     >
-      <div className="max-w-[1800px] mx-auto px-6">
-        <div className="flex justify-between items-center h-16">
+      <div className="max-w-[1800px] px-6">
+        <div className="flex justify-between items-center h-16 mx-4">
           {/* Logo & Organization Name - Left */}
           <Link
             to="/"
             className="flex items-center space-x-3 cursor-pointer"
             onClick={() => setIsOpen(false)}
           >
-            <Mountain className="h-8 w-8 text-primary" />
+            <img
+              src="/sadagori/logo_sadagori.svg"
+              alt="Logo"
+              className="h-12 my-4 ml-24 my-4"
+            />
             <div className="flex flex-col">
-              <span className="text-muted-foreground">
-                Perhimpunan Pecinta Alam
-              </span>
-              <span className="text-foreground font-medium text-xl">
-                S A D A G O R I
-              </span>
+              <span className="text-xs">Perhimpunan Pecinta Alam</span>
+              <span className="font-medium text-xl">S A D A G O R I</span>
             </div>
           </Link>
 
@@ -59,24 +59,21 @@ export function Navigation() {
               <Link
                 key={item.id}
                 to={item.path}
-                className={`text-sm font-medium transition-colors hover:text-primary ${
+                className={`relative text-sm font-medium transition-colors hover:text-primary group ${
                   location.pathname === item.path
-                    ? "text-primary"
-                    : "text-foreground/70"
+                    ? "text-primary font-bold"
+                    : "font-normal"
                 }`}
               >
                 {item.label}
+                <span className="absolute inset-x-0 bottom-0 h-0.5 bg-primary transform scale-x-0 transition-transform duration-300 group-hover:scale-x-100"></span>
               </Link>
             ))}
           </div>
 
           {/* Account - Right */}
           <div className="hidden lg:flex items-center">
-            <Button
-              variant="ghost"
-              size="sm"
-              className="text-foreground hover:bg-secondary"
-            >
+            <Button variant="ghost" className="hover:bg-secondary">
               <User className="h-4 w-4 mr-2" />
               Account
             </Button>
